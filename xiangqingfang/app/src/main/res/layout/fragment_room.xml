@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/room_bg"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/roomName"
+                android:layout_width="wrap_content"
+                android:layout_height="22.5dp"
+                android:text="相亲房聊天"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/closeBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="center"
+                android:src="@mipmap/close_btn" />
+        </LinearLayout>
+
+        <com.zg.xqf.view.PreviewItemsGroup
+            android:id="@+id/previewItemView"
+            android:layout_weight="0.6"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"  >
+
+        </com.zg.xqf.view.PreviewItemsGroup>
+
+
+        <LinearLayout
+            android:id="@+id/bottomBtns"
+            android:layout_weight="0.2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingBottom="13dp"
+            android:gravity="bottom|end" >
+            <Button
+                android:id="@+id/downMicBtn"
+                android:textAlignment="center"
+                android:background="@drawable/bg_red_round_btn"
+                android:drawableLeft="@mipmap/icon_conn"
+                android:paddingHorizontal="18dp"
+                android:text="下麦"
+                android:textColor="#fff"
+                android:textSize="13sp"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="14dp"
+                android:layout_height="36dp"/>
+            <Button
+                android:id="@+id/upMicBtn"
+                android:textAlignment="center"
+                android:background="@drawable/bg_white_round_btn"
+                android:drawableLeft="@mipmap/icon_conn"
+                android:paddingHorizontal="18dp"
+                android:text="连麦"
+                android:textColor="#fff"
+                android:textSize="13sp"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="14dp"
+                android:layout_height="36dp"/>
+            <ImageView
+                android:id="@+id/speechOpenBtn"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="6dp"
+                android:background="@drawable/bg_circle_icon"
+                android:layout_marginRight="14dp"
+                android:src="@mipmap/icon_mic_switch"/>
+            <ImageView
+                android:id="@+id/speechClosedBtn"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="6dp"
+                android:background="@drawable/bg_circle_icon"
+                android:layout_marginRight="14dp"
+                android:src="@mipmap/icon_mic_no_speech"/>
+            <ImageView
+                android:id="@+id/delUserBtn"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="6dp"
+                android:layout_marginRight="14dp"
+                android:background="@drawable/bg_circle_icon"
+                android:src="@drawable/icon_del_user"/>
+            <ImageView
+                android:id="@+id/addUserBtn"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="6dp"
+                android:background="@drawable/bg_circle_icon"
+                android:layout_marginRight="22dp"
+                android:src="@drawable/icon_add_user"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
+

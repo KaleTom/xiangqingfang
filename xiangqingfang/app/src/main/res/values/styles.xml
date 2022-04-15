@@ -1,0 +1,33 @@
+<resources>
+
+<!--    <style name="Widget.Theme.Xqf.ButtonBar.Fullscreen" parent="">-->
+<!--        <item name="android:background">@color/black_overlay</item>-->
+<!--        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>-->
+<!--    </style>-->
+
+    <style name="TranslucentTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+    <!--    //valuse-->
+    <!--    <style name="TranslucentTheme" parent="AppTheme">-->
+    <!--    </style>-->
+
+    <!--    // values-v19。v19 开始有 android:windowTranslucentStatus 这个属性-->
+    <!--    <style name="TranslucentTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+    <!--        <item name="android:windowTranslucentStatus">true</item>-->
+    <!--        <item name="android:windowTranslucentNavigation">true</item>-->
+    <!--    </style>-->
+
+    <!--    &lt;!&ndash;    // values-v21。5.0 以上提供了 setStatusBarColor()  方法设置状态栏颜色。&ndash;&gt;-->
+    <!--    <style name="TranslucentTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+    <!--        <item name="android:windowTranslucentStatus">false</item>-->
+    <!--        <item name="android:windowTranslucentNavigation">true</item>-->
+    <!--        &lt;!&ndash;Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色&ndash;&gt;-->
+    <!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
+    <!--    </style>-->
+</resources>

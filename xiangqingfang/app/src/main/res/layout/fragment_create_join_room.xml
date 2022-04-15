@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@drawable/bg_login_white_round"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="22dp"
+                    android:paddingVertical="6dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginBottom="3.5dp"
+                        android:text="房间名"
+                        android:textColor="#2A2A2A"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/roomNameEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_edit"
+                        android:inputType="text"
+                        android:maxLength = "8"
+                        android:lines="1"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="11.5dp"
+                        android:textSize="15dp"
+                        android:text="测试" />
+
+                    <TextView
+                        android:id="@+id/roomNameTip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="这里是错误信息"
+                        android:textColor="#FF4A50"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="22dp"
+                    android:paddingVertical="6dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginBottom="3.5dp"
+                        android:text="房间ID"
+                        android:textColor="#2A2A2A"
+                        android:textSize="14sp" />
+                    <EditText
+                        android:id="@+id/roomIdEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_edit"
+                        android:inputType="number"
+                        android:textSize="15dp"
+                        android:lines="1"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="11.5dp"
+                        android:maxLength = "8"
+                        android:text="9085888" />
+
+                    <TextView
+                        android:id="@+id/roomIdTip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="这里是错误信息"
+                        android:textColor="#FF4A50"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingHorizontal="22dp"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/createRoomBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_btn"
+                        android:textColor="#ffffff"
+                        android:layout_weight="1"
+                        android:text="创建房间" />
+
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:id="@+id/joinRoomBtn"
+                        android:textColor="#ffffff"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_btn"
+                       android:text="进入房间" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
