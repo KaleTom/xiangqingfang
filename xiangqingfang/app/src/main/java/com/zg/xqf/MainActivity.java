@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+//        translucent();
+//        setContentView(R.layout.fragment_create_join_room);
+//        StatusBarUtil.setTranslucent(this, 0);
 //        translucent();
         setContentView(R.layout.activity_main);
         translucent();

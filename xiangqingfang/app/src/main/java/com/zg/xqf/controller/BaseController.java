@@ -51,7 +51,8 @@ public class BaseController implements IMyEventListener {
     }
 
     public void onInit() {
-        Zego.loginRoom(mEngine, mUserInfo, mRoomId);
+        String token = Zego.getToken(mUserInfo.uid, mRoomId);
+        Zego.loginRoom(mEngine, mUserInfo.uid, mUserInfo.name, mRoomId, token);
 
         mEngine.startSoundLevelMonitor(); //启动声浪监听
     }

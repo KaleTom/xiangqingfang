@@ -1,23 +1,19 @@
 package com.zg.xqf.zego;
 
 import android.app.Application;
-import android.os.Build;
 import android.util.Log;
 import android.view.TextureView;
 
 import com.zg.xqf.entity.Msg;
+import com.zg.xqf.entity.TokenEntity;
 import com.zg.xqf.entity.UserInfo;
+import com.zg.xqf.util.TokenUtils;
 
-import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
 
-import androidx.annotation.RequiresApi;
 import im.zego.zegoexpress.ZegoExpressEngine;
 import im.zego.zegoexpress.callback.IZegoEventHandler;
 import im.zego.zegoexpress.callback.IZegoIMSendBroadcastMessageCallback;
@@ -32,9 +28,6 @@ import static im.zego.zegoexpress.constants.ZegoViewMode.ASPECT_FILL;
 
 public class Zego {
     private final static String TAG = "Zego";
-    private static long APPID = ;  //这里填写APPID
-    private static String SIGN = "";  //这里填写签名
-    private static String SERVER_SECRET = ""; //这里填写服务器端密钥
 
     public static int randInt(int min, int max) {
         int idx = (int) (min + Math.random() * (max - min + 1));
@@ -51,8 +44,8 @@ public class Zego {
         sr.nextBytes(bytes);
         String signatureNonce = bytesToHex(bytes);
         long timestamp = System.currentTimeMillis() / 1000L;
-        String signature = GenerateSignature(APPID, signatureNonce, SERVER_SECRET, timestamp);
-        return "AppId=" + APPID +
+        String signature = GenerateSignature(KeyCenter.APPID, signatureNonce, KeyCenter.SERVER_SECRET, timestamp);
+        return "AppId=" + KeyCenter.APPID +
                 "&SignatureNonce=" + signatureNonce +
                 "&Timestamp=" + timestamp +
                 "&Signature=" + signature + "&SignatureVersion=2.0&IsTest=false";
@@ -100,24 +93,31 @@ public class Zego {
     }
 
     public static ZegoExpressEngine createEngine(Application app, IZegoEventHandler handler) {
+
         ZegoEngineProfile profile = new ZegoEngineProfile();
-        profile.appID = APPID;
-        profile.appSign = SIGN;
+        profile.appID = KeyCenter.APPID;
         profile.scenario = ZegoScenario.GENERAL;  // 通用场景接入
         profile.application = app;
         ZegoExpressEngine engine = ZegoExpressEngine.createEngine(profile, handler);
         return engine;
     }
 
-    public static boolean loginRoom(ZegoExpressEngine engine, UserInfo userInfo, String roomId) {
-        // ZegoUser 的构造方法 public ZegoUser(String userID) 会将 “userName” 设为与传的参数 “userID”
-        // 一样。“userID” 与 “userName” 不能为 “null” 否则会导致登录房间失败。
-        ZegoUser user = new ZegoUser(userInfo.uid, userInfo.name);
-        // 只有传入 “isUserStatusNotify” 参数取值为 “true” 的 ZegoRoomConfig，才能收到 onRoomUserUpdate 回调。
-        ZegoRoomConfig roomConfig = new ZegoRoomConfig();
-        roomConfig.isUserStatusNotify = true;
-        // 登录房间
-        engine.loginRoom(roomId, user, roomConfig);
+    public static String getToken(String userId, String roomId) {
+        TokenEntity tokenEntity = new TokenEntity(KeyCenter.APPID, userId, roomId, 60 * 60, 1, 1);
+
+        String token = TokenUtils.generateToken04(tokenEntity);
+        return token;
+
+    }
+
+    public static boolean loginRoom(ZegoExpressEngine engine, String userId, String userName, String roomId, String token) {
+
+        ZegoUser user = new ZegoUser(userId, userName);
+        ZegoRoomConfig config = new ZegoRoomConfig();
+        config.token = token; // 请求开发者服务端获取
+        config.isUserStatusNotify = true;
+        engine.loginRoom(roomId, user, config);
+        Log.e(TAG, "登录房间：" + roomId);
         return true;
     }
 
